@@ -17,6 +17,8 @@ def main() -> None:
     template = (ROOT/"scripts/index.template.html").read_text("utf-8")
     css = (ROOT/"scripts/style.css").read_text("utf-8")
     js = (ROOT/"scripts/app.js").read_text("utf-8")
+    js=js.replace("/*__THEME_UI__*/",(ROOT/"scripts/theme_ui.js").read_text("utf-8"))
+    css+="\n"+(ROOT/"scripts/theme_style.css").read_text("utf-8")
     data = json.loads(args.embed.read_text("utf-8"))
     if data.get("schemaVersion") != 3 or data.get("period") != "month":
         parser.error("Run the Lite update_data.py first (--local-only reuses completed saved data).")

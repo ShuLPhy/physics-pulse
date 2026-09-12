@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Physics Pulse 0.5.0: monthly counts with optional bibliographic metadata.
+"""Physics Pulse 0.6.0: monthly counts with optional bibliographic metadata.
 
 Core count/sync storage stays at .cache/physics-lite.sqlite. Normal incremental
 updates keep received titles/authors, but still discard incoming abstracts.
@@ -23,6 +23,7 @@ import time
 import urllib.parse
 from typing import Any
 import paper_metadata
+import themes
 from oai import SerialHTTP, HarvestError, OAIError, parse_oai, utc_datetime, stamp, OAI_URL
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -77,6 +78,7 @@ def connect_db(path):
     if cols!=['id','created','category']:
         db.close();raise HarvestError('This is not a Lite database. Use a different --db path; old data are imported separately.')
     paper_metadata.initialize(db)
+    themes.initialize(db)
     db.commit();return db
 
 
@@ -155,6 +157,7 @@ def upsert_records(db,records,minimum,allowed,title_minimum=None):
             db.execute('INSERT INTO recent_titles VALUES (?,?) ON CONFLICT(id) DO UPDATE SET title=excluded.title',(p['id'],p['title']))
         else:db.execute('DELETE FROM recent_titles WHERE id=?',(p['id'],))
         if "authors" in p:paper_metadata.store_observed(db,p)
+        themes.observe(db,p)
         retained+=1
     return retained
 
@@ -187,7 +190,8 @@ def harvest(db,tax,as_of,months,client,title_months=2,max_pages=10000,force=Fals
         else:
             params.update(metadataPrefix='arXivRaw',**{'from':from_date})
             if selected_set:params['set']=selected_set
-        try:page=parse_oai(client.request(OAI_URL+'?'+urllib.parse.urlencode(params)),title_min,author_minimum=minimum if retain_bibliography else None)
+        try:page=parse_oai(client.request(OAI_URL+'?'+urllib.parse.urlencode(params)),title_min,author_minimum=minimum if retain_bibliography else None,
+                           theme_minimum=minimum if retain_bibliography else None)
         except OAIError as exc:
             if exc.code=='badResumptionToken' and token and not restarted:
                 token=None;restarted=True;first_response=None
@@ -311,7 +315,9 @@ def atomic_write(path,content):
 def publish(db,snapshot,site):
     if snapshot['mode']!='live' or not snapshot['coverage'].get('complete'):raise HarvestError('Only complete snapshots can be published.')
     as_of=utc_datetime(snapshot['asOf']);title_min=utc_datetime(snapshot['titlesSince']) if snapshot['titlesSince'] else None
-    keep=set(); totals={'papers':0,'titles':0,'authors':0,'abstracts':0}
+    themes.backfill(db)
+    snapshot['themes']=themes.summary(db,snapshot)
+    keep=set(); theme_keep=set(); totals={'papers':0,'titles':0,'authors':0,'abstracts':0}
     snapshot['metadataCoverage']={}
     if snapshot['paperIndexEnabled']:
         for i,key in enumerate(snapshot['monthStarts']):
@@ -345,10 +351,20 @@ def publish(db,snapshot,site):
             snapshot['paperFiles'][key]=mapping
             snapshot['metadataCoverage'][key]=month_coverage
             LOG.info('Exported compact index %d/%d: %s.',i+1,len(snapshot['monthStarts']),key[:7])
+    if snapshot['paperIndexEnabled']:
+        for key in snapshot['monthStarts']:
+            end=min(shift_month(utc_datetime(key+'T00:00:00Z'),1),as_of)
+            body=json_text(themes.month_index(db,key,end))
+            digest=hashlib.sha256(body.encode()).hexdigest()[:12]
+            rel=f'data/themes/{key}-{digest}.json.gz'
+            atomic_write(site/rel,gzip.compress(body.encode(),compresslevel=6,mtime=0))
+            snapshot['themes']['files'][key]=rel;theme_keep.add(rel)
     snapshot['metadataTotals']=totals
     atomic_write(site/'data/physics.json',json_text(snapshot))
     # Remove superseded shards only after successfully replacing the manifest.
     # Old tabs must reload. The legacy LOCAL database remains untouched.
+    for path in (site/'data/themes').glob('*.json.gz'):
+        if path.relative_to(site).as_posix() not in theme_keep:path.unlink()
     root=site/'data/papers'
     for path in root.rglob('*'):
         if path.is_file() and path.name.endswith(('.json','.json.gz')) and path.relative_to(site).as_posix() not in keep:path.unlink()
@@ -382,7 +398,7 @@ def main(argv=None):
     logging.basicConfig(level=logging.INFO,format='%(asctime)s %(levelname)s %(message)s')
     as_of=datetime.now(UTC).replace(microsecond=0);tax=json.loads((ROOT/'scripts/taxonomy.json').read_text('utf-8'))
     contact=os.environ.get('ARXIV_CONTACT','').strip()
-    client=SerialHTTP('PhysicsPulse/0.5.0 (metadata observatory'+('; mailto:'+contact if contact else '')+')')
+    client=SerialHTTP('PhysicsPulse/0.6.0 (metadata observatory'+('; mailto:'+contact if contact else '')+')')
     try:
         with collector_lock(a.db):
             db=connect_db(a.db)

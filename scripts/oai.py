@@ -99,10 +99,12 @@ def clean_id(value: str) -> str:
 
 
 def parse_oai(xml: bytes, title_minimum: datetime | None = None, *,
-              author_minimum: datetime | None = None) -> dict[str, Any]:
+              author_minimum: datetime | None = None,
+              theme_minimum: datetime | None = None) -> dict[str, Any]:
     """Extract core fields; optionally keep authors from already-received records.
 
-    Abstracts are always discarded. author_minimum enables title/author retention
+    Abstracts are never returned or persisted. With theme_minimum they are used
+    transiently to compute phrase tags before clearing the record. author_minimum enables title/author retention
     for in-window records during an ordinary sync, without additional requests.
 
     arXiv does not support a field projection for ListRecords. Irrelevant XML
@@ -114,6 +116,7 @@ def parse_oai(xml: bytes, title_minimum: datetime | None = None, *,
     records=[]; token=None; response_date=None; error=None; listing=False; first=True
     discard={"abstract","comments","journal-ref","doi","license","report-no","msc-class","acm-class"}
     if author_minimum is None:discard.add("authors")
+    if theme_minimum is not None:discard.discard("abstract")
     try:
         for event, el in ET.iterparse(io.BytesIO(xml), events=("start","end")):
             name=local_name(el)
@@ -151,6 +154,9 @@ def parse_oai(xml: bytes, title_minimum: datetime | None = None, *,
                     rec["title"]=title
                 if author_minimum is not None and pub>=author_minimum:
                     rec["authors"]=" ".join(child_text(raw,"authors").split()) or None
+                if theme_minimum is not None and pub>=theme_minimum and rec["category"].startswith("cond-mat."):
+                    import themes
+                    rec["_themes"]=themes.classify(child_text(raw,"title"),child_text(raw,"abstract"))
                 records.append(rec);el.clear()
     except ET.ParseError as exc:
         raise HarvestError("Invalid OAI XML.") from exc

@@ -17,9 +17,10 @@ import update_data as m
 SCRIPT_NAMES=('app.js','build.py','index.template.html','oai.py','paper_metadata.py',
  'restore_metadata.py','style.css','taxonomy.json','update_data.py','deploy_state.py',
  'github_state.py','validate_site.py','cloud_build.py','record_publication.py',
- 'prepare_publish.py','publish_github.py')
-ROOT_FILES=('README.md','DEPLOY.md','RETENTION.md','TEST_REPORT.md','LICENSE','VERSION','.gitignore')
-TEST_NAMES=('test_pipeline.py','test_metadata.py','test_deployment.py')
+ 'prepare_publish.py','publish_github.py','themes.py','themes.json','theme_ui.js','theme_style.css',
+ 'classify_themes.py','upgrade_github.py','release_manifest.json')
+ROOT_FILES=('README.md','DEPLOY.md','RETENTION.md','TEST_REPORT.md','LICENSE','VERSION','.gitignore','THEMES.md','UPGRADE_v0.6.0.md')
+TEST_NAMES=('test_pipeline.py','test_metadata.py','test_deployment.py','test_themes.py','test_theme_deploy.py')
 
 
 def prepare(db: Path, output: Path) -> dict:
@@ -33,7 +34,7 @@ def prepare(db: Path, output: Path) -> dict:
         src=m.ROOT/rel
         if src.is_symlink() or not src.is_file():raise m.HarvestError('Expected source file is missing or is a symlink: '+rel)
         dest=source/rel;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dest)
-    m.atomic_write(source/'.github/publication.json',json.dumps({'appVersion':'0.5.0','status':'not-yet-deployed'},indent=2)+'\n')
+    m.atomic_write(source/'.github/publication.json',json.dumps({'appVersion':'0.6.0','status':'not-yet-deployed'},indent=2)+'\n')
     manifest=deploy_state.export_bundle(db,output/'seed')
     report={'source':str(source.resolve()),'manifest':str(manifest.resolve())}
     m.atomic_write(output/'package.json',json.dumps(report,indent=2)+'\n')

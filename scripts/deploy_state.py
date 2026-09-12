@@ -27,6 +27,7 @@ TABLES = {
     'papers': ('id','created','category'),
     'recent_titles': ('id','title'),
     'paper_details': ('id','title','authors','abstract_gz','info_source'),
+    'theme_classifications': ('id','rule_key','basis','input_hash','title_hash','hits','source'),
     'monthly_baseline': ('month','category','n'),
 }
 META_KEYS = ('coverage_from','snapshot_as_of','last_success','baseline_month',
@@ -111,7 +112,7 @@ def export_bundle(source: Path, directory: Path, months: int=60) -> Path:
         with portable.open('rb') as inp,blob.open('wb') as out:
             with gzip.GzipFile(filename='',fileobj=out,mode='wb',compresslevel=6,mtime=0) as gz:
                 shutil.copyfileobj(inp,gz,1024*1024)
-        manifest={'schemaVersion':1,'appVersion':'0.5.0','kind':'physics-pulse-state',
+        manifest={'schemaVersion':1,'appVersion':'0.6.0','kind':'physics-pulse-state',
                   'createdAt':m.stamp(datetime.now(timezone.utc)),'file':blob.name,
                   'sha256':digest(blob),'compressedBytes':blob.stat().st_size,'sqliteBytes':raw_size,
                   **info,'publicMetadataOnly':True,'rawXMLIncluded':False}

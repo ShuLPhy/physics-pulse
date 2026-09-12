@@ -52,7 +52,7 @@ def start(name: str, db: Path, public: bool):
             git(source,'config','user.name',user['login'])
             git(source,'config','user.email',str(user['id'])+'+'+user['login']+'@users.noreply.github.com')
             git(source,'add','.')
-            git(source,'commit','-m','Publish Physics Pulse v0.5.0 source')
+            git(source,'commit','-m','Publish Physics Pulse v0.6.0 source')
             git(source,'remote','add','origin','https://github.com/'+repo+'.git')
         git(source,'-c','credential.helper=','-c','credential.helper=!gh auth git-credential','push','-u','origin','main')
         progress['pushed']=True;save()

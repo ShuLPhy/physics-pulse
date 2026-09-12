@@ -16,7 +16,7 @@
  <button class="nav-item" id="watch-nav"><span class="nav-icon">☆</span><span>Watchlist</span><span class="nav-count" id="watch-count">0</span></button>
  <div class="nav-section-title field-label">FIELDS <span>09</span></div>
  <nav id="group-nav" aria-label="物理分野"></nav>
- <div class="sidebar-bottom"><button class="plain-btn" data-action="method">集計方法 <span>↗</span></button><div class="independent">Independent / arXiv data</div><div class="version-tag">v0.4.0</div></div>
+ <div class="sidebar-bottom"><button class="plain-btn" data-action="method">集計方法 <span>↗</span></button><div class="independent">Independent / arXiv data</div><div class="version-tag">v0.6.0</div></div>
 </aside>
 <div class="sidebar-shade" id="sidebar-shade"></div>
 <main id="main">
@@ -27,6 +27,11 @@
    <div class="month-control"><div class="month-picker"><button id="prev-month" class="icon-btn" aria-label="前の月">‹</button><div class="period-display"><strong id="period-title"></strong><select id="month-select" aria-label="集計する月"></select></div><button id="next-month" class="icon-btn" aria-label="次の月">›</button></div><div class="period-shortcuts"><span id="month-tag"></span><button id="current-month" class="selected" aria-pressed="true">今月</button><button id="complete-month" aria-pressed="false">前月</button></div><span id="period-range" class="sr-only"></span></div>
   </section>
   <div class="data-notice" id="data-notice" role="status"></div>
+  <div class="lens-bar" id="lens-bar" role="group" aria-label="Analysis view">
+    <button id="lens-areas" class="active" aria-pressed="true">研究領域</button>
+    <button id="lens-themes" aria-pressed="false">テーマ <span>BETA</span></button>
+  </div>
+  <section id="themes-panel" hidden aria-label="Research themes"></section>
   <section class="stats-grid" id="stats-grid" aria-label="選択月の統計"></section>
   <section class="workspace">
    <div class="map-card">
@@ -78,11 +83,15 @@
  <section><span class="method-number">03</span><h3>勢いと関心を、分けて表示</h3><p>領域の順位は、表示中の分野内における「直近の終了月3か月のシェア」から「その前3か月のシェア」を引いた値。前期30本以上、上昇した領域が対象です。検索で絞っても分母は変えません。</p><p>論文は入力した関心語と保存済みタイトル・要旨の一致数で並べます。意味の理解や同義語の推定はしません。どちらも人気・品質・統計的有意性の指標ではありません。</p></section>
  <section><span class="method-number">04</span><h3>データの状態</h3><p id="coverage-note"></p><p id="method-data-note">同梱データは操作確認用の合成データです。</p><p>取得完了後にだけ画面用データを置き換えます。集計はUTC暦月。終了月でも再分類や公開遅延により後日修正される場合があります。</p></section>
  <section><span class="method-number">05</span><h3>チャートの表示</h3><p>縦軸のAUTOは、表示期間の値に合わせて上下限を調整します。最小値と最大値はLOW / HIGHに明示。右軸の目盛りは実際の投稿数です。「0」でゼロ起点に戻せます。領域間で線の高さを比較せず、目盛りや数値を確認してください。</p><p>標準の折れ線は終了月のみ。「速報」をオンにすると、未完了月の取得済み件数を点線で追加します。月末件数の予測・補正はしません。面積は常に選択月の取得済み全件数です。</p><p>3Mは終了月の3か月移動平均。線は月次の観測値を直線でつなぎ、スムージングによる値の上書きはしません。線の下の薄い塗りは装飾で、面積は累積投稿数を表しません。</p></section>
+ <section><span class="method-number">06</span><h3>テーマ / Lexical pilot</h3><p>Condensed Matterに複数タグを付ける独立した試験分類です。APSの分類体系の考え方と一部の概念を参照し、独自の語句辞書で判定します。著者が付けたタグでも、APSによる認定でもありません。語句の言及と、論文の主題は一致しないことがあります。</p><p>タイトルのみと、タイトル＋要旨の入力を混ぜません。出現率の分母は選択した入力が揃った論文数で、分野全体の推定ではありません。入力のない論文は未判定、入力はあるが辞書に一致しない論文は一致なしです。重複タグの比率は合計100%になりません。</p><p>3M比較は終了した直近3か月とその前3か月。各月の判定可能率90%以上、期間間の差5ポイント以内、両期間の該当数30本以上を表示基準にします。有意差の検定ではありません。分類可能率が90%未満の月は線をつながず、個別点は選択して検出数を確認できます。</p><p>分類規則の版と内容ハッシュを保存します。入力を破棄して再判定できない旧版タグは新規則に混ぜません。今後の要旨は受信中にタグ判定して破棄し、生文を新しく蓄積しません。<a href="https://physh.org/about" target="_blank" rel="noopener noreferrer">分類体系の参考</a> / <a href="https://physh.org/licensing" target="_blank" rel="noopener noreferrer">概念データのCC0</a></p></section>
  </div>
  <div class="source-links"><span>PRIMARY SOURCES</span><a href="https://arxiv.org/category_taxonomy" target="_blank" rel="noopener noreferrer">arXiv categories ↗</a><a href="https://info.arxiv.org/help/oa/index.html" target="_blank" rel="noopener noreferrer">OAI-PMH ↗</a><a href="https://info.arxiv.org/help/api/tou.html" target="_blank" rel="noopener noreferrer">API terms ↗</a></div>
  <div class="attribution">Thank you to arXiv for use of its open access interoperability. This service was not reviewed or approved by, nor does it necessarily express or reflect the policies or opinions of, arXiv.</div><div class="method-bottom">設定とウォッチリストは、このブラウザ内にのみ保存します。arXiv公式サービスではありません。</div>
 </dialog>
 
+<dialog id="theme-dialog" class="theme-dialog" aria-labelledby="theme-dialog-title">
+  <div id="theme-dialog-body"></div>
+</dialog>
 <div id="toast" class="toast" role="status" hidden></div>
 <script id="embedded-data" type="application/json">/*__DATA__*/</script><script>/*__JS__*/</script>
 </body></html>

@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "version": "cm-1.0.0",
+  "scope": "cond-mat",
+  "engine": "bounded-phrase-v1",
+  "sources": [
+    {
+      "url": "https://physh.org/about",
+      "role": "faceted organization"
+    },
+    {
+      "url": "https://physh.org/licensing",
+      "role": "concept references CC0; no logo or brand affiliation"
+    }
+  ],
+  "notes": "Independent pilot vocabulary. Linked concepts are reference anchors, not exact equivalence or APS-assigned tags. Aliases, grouping and classification rules are locally authored; no claim of completeness or semantic accuracy.",
+  "facets": [
+    {
+      "id": "phenomenon",
+      "name": "\u73fe\u8c61"
+    },
+    {
+      "id": "system",
+      "name": "\u5bfe\u8c61\u7cfb"
+    },
+    {
+      "id": "method",
+      "name": "\u624b\u6cd5"
+    }
+  ],
+  "policy": {
+    "minMonthlyCoverage": 0.9,
+    "maxCoverageDrift": 0.05,
+    "minPeriodHits": 30,
+    "periodMonths": 3
+  },
+  "themes": [
+    {
+      "id": "localization",
+      "name": "Localization",
+      "ja": "\u5c40\u5728",
+      "facet": "phenomenon",
+      "aliases": [
+        "Anderson localization",
+        "Anderson localisation",
+        "many body localization",
+        "many body localisation",
+        "weak localization",
+        "weak localisation",
+        "dynamical localization",
+        "dynamical localisation",
+        "localization transition",
+        "localisation transition",
+        "mobility edge",
+        "mobility edges"
+      ],
+      "children": [
+        "anderson",
+        "many-body-localization"
+      ]
+    },
+    {
+      "id": "anderson",
+      "name": "Anderson localization",
+      "ja": "Anderson\u5c40\u5728",
+      "facet": "phenomenon",
+      "aliases": [
+        "Anderson localization",
+        "Anderson localisation",
+        "Anderson localized",
+        "Anderson localised"
+      ],
+      "parent": "localization",
+      "source": "https://physh.org/concepts/295dd02d-5447-477d-8f0b-0760bd7f1e39"
+    },
+    {
+      "id": "many-body-localization",
+      "name": "Many-body localization",
+      "ja": "\u591a\u4f53\u5c40\u5728",
+      "facet": "phenomenon",
+      "aliases": [
+        "many body localization",
+        "many body localisation",
+        "many body localized",
+        "many body localised"
+      ],
+      "parent": "localization"
+    },
+    {
+      "id": "quantum-hall",
+      "name": "Quantum Hall",
+      "ja": "\u91cf\u5b50\u30db\u30fc\u30eb",
+      "facet": "phenomenon",
+      "aliases": [
+        "quantum Hall",
+        "fractional Chern insulator",
+        "fractional Chern insulators"
+      ],
+      "source": "https://physh.org/concepts/9017d068-f9d7-42f8-b083-a385e9b14c0b"
+    },
+    {
+      "id": "superconductivity",
+      "name": "Superconductivity",
+      "ja": "\u8d85\u4f1d\u5c0e",
+      "facet": "phenomenon",
+      "aliases": [
+        "superconductivity",
+        "superconducting",
+        "superconductor",
+        "superconductors",
+        "Cooper pairing",
+        "Josephson"
+      ]
+    },
+    {
+      "id": "topological-phases",
+      "name": "Topological phases",
+      "ja": "\u30c8\u30dd\u30ed\u30b8\u30ab\u30eb\u76f8",
+      "facet": "phenomenon",
+      "aliases": [
+        "topological insulator",
+        "topological insulators",
+        "topological superconductivity",
+        "topological superconductor",
+        "topological phase",
+        "topological phases",
+        "topological order",
+        "Chern insulator",
+        "Chern insulators",
+        "topological edge",
+        "Majorana zero"
+      ]
+    },
+    {
+      "id": "hydrodynamics",
+      "name": "Electron hydrodynamics",
+      "ja": "\u96fb\u5b50\u6d41\u4f53",
+      "facet": "phenomenon",
+      "aliases": [
+        "electron hydrodynamics",
+        "electronic hydrodynamics",
+        "hydrodynamic electron",
+        "hydrodynamic electronic",
+        "electron fluid",
+        "electronic fluid",
+        "viscous electron",
+        "electron viscosity"
+      ]
+    },
+    {
+      "id": "spin-transport",
+      "name": "Spin transport",
+      "ja": "\u30b9\u30d4\u30f3\u30c8\u30ed\u30cb\u30af\u30b9",
+      "facet": "phenomenon",
+      "aliases": [
+        "spintronics",
+        "spintronic",
+        "spin transport",
+        "spin current",
+        "spin currents",
+        "spin Hall",
+        "spin orbit torque"
+      ]
+    },
+    {
+      "id": "quantum-criticality",
+      "name": "Quantum criticality",
+      "ja": "\u91cf\u5b50\u81e8\u754c",
+      "facet": "phenomenon",
+      "aliases": [
+        "quantum critical",
+        "quantum criticality",
+        "quantum phase transition",
+        "quantum phase transitions"
+      ]
+    },
+    {
+      "id": "floquet",
+      "name": "Floquet dynamics",
+      "ja": "\u5468\u671f\u99c6\u52d5\u30fbFloquet",
+      "facet": "phenomenon",
+      "aliases": [
+        "Floquet",
+        "periodically driven",
+        "periodic driving",
+        "discrete time crystal",
+        "discrete time crystals"
+      ]
+    },
+    {
+      "id": "charge-order",
+      "name": "Charge order",
+      "ja": "\u96fb\u8377\u79e9\u5e8f",
+      "facet": "phenomenon",
+      "aliases": [
+        "charge density wave",
+        "charge density waves",
+        "charge order",
+        "charge ordering",
+        "charge ordered"
+      ]
+    },
+    {
+      "id": "moire",
+      "name": "Moir\u00e9 systems",
+      "ja": "\u30e2\u30a2\u30ec\u7cfb",
+      "facet": "system",
+      "aliases": [
+        "moire",
+        "moir\u00e9",
+        "twisted bilayer",
+        "twisted trilayer",
+        "magic angle"
+      ]
+    },
+    {
+      "id": "weyl-dirac",
+      "name": "Weyl & Dirac materials",
+      "ja": "Weyl\u30fbDirac\u7269\u8cea",
+      "facet": "system",
+      "aliases": [
+        "Weyl semimetal",
+        "Weyl semimetals",
+        "Dirac semimetal",
+        "Dirac semimetals",
+        "Weyl metal",
+        "Dirac material",
+        "Dirac materials",
+        "Weyl fermion",
+        "Weyl fermions"
+      ]
+    },
+    {
+      "id": "quantum-dots",
+      "name": "Quantum dots",
+      "ja": "\u91cf\u5b50\u30c9\u30c3\u30c8",
+      "facet": "system",
+      "aliases": [
+        "quantum dot",
+        "quantum dots"
+      ]
+    },
+    {
+      "id": "spin-liquids",
+      "name": "Quantum spin liquids",
+      "ja": "\u91cf\u5b50\u30b9\u30d4\u30f3\u6db2\u4f53",
+      "facet": "system",
+      "aliases": [
+        "spin liquid",
+        "spin liquids",
+        "Kitaev material",
+        "Kitaev materials",
+        "Kitaev spin"
+      ]
+    },
+    {
+      "id": "ultracold",
+      "name": "Ultracold matter",
+      "ja": "\u6975\u4f4e\u6e29\u91cf\u5b50\u6c17\u4f53",
+      "facet": "system",
+      "aliases": [
+        "ultracold",
+        "ultra cold",
+        "cold atom",
+        "cold atoms",
+        "Bose Einstein condensate",
+        "Bose Einstein condensation",
+        "Fermi gas",
+        "Fermi gases"
+      ]
+    },
+    {
+      "id": "active-matter",
+      "name": "Active matter",
+      "ja": "\u30a2\u30af\u30c6\u30a3\u30d6\u30de\u30bf\u30fc",
+      "facet": "system",
+      "aliases": [
+        "active matter",
+        "active nematic",
+        "active nematics",
+        "active Brownian",
+        "self propelled particle",
+        "self propelled particles"
+      ]
+    },
+    {
+      "id": "glasses",
+      "name": "Glasses & jamming",
+      "ja": "\u30ac\u30e9\u30b9\u30fb\u30b8\u30e3\u30df\u30f3\u30b0",
+      "facet": "system",
+      "aliases": [
+        "spin glass",
+        "spin glasses",
+        "structural glass",
+        "structural glasses",
+        "glass transition",
+        "glassy",
+        "jamming",
+        "jammed"
+      ]
+    },
+    {
+      "id": "first-principles",
+      "name": "First-principles methods",
+      "ja": "\u7b2c\u4e00\u539f\u7406\u8a08\u7b97",
+      "facet": "method",
+      "aliases": [
+        "first principles",
+        "ab initio",
+        "density functional theory",
+        "density functional calculations"
+      ]
+    },
+    {
+      "id": "tensor-networks",
+      "name": "Tensor networks",
+      "ja": "\u30c6\u30f3\u30bd\u30eb\u30cd\u30c3\u30c8\u30ef\u30fc\u30af",
+      "facet": "method",
+      "aliases": [
+        "tensor network",
+        "tensor networks",
+        "matrix product state",
+        "matrix product states",
+        "density matrix renormalization",
+        "density matrix renormalisation"
+      ],
+      "source": "https://physh.org/concepts/70623632-e9d5-4eaa-b6b3-95c6b0ce0b9c"
+    },
+    {
+      "id": "monte-carlo",
+      "name": "Monte Carlo",
+      "ja": "\u30e2\u30f3\u30c6\u30ab\u30eb\u30ed\u6cd5",
+      "facet": "method",
+      "aliases": [
+        "Monte Carlo"
+      ]
+    },
+    {
+      "id": "learning-methods",
+      "name": "Learning methods",
+      "ja": "\u6a5f\u68b0\u5b66\u7fd2\u306b\u3088\u308b\u89e3\u6790",
+      "facet": "method",
+      "aliases": [
+        "machine learning",
+        "deep learning",
+        "neural network quantum state",
+        "neural quantum state",
+        "neural quantum states",
+        "neural network potential",
+        "neural network potentials",
+        "neural network based",
+        "neural network approach",
+        "neural network method"
+      ],
+      "note": "A generic neural-network mention alone is not enough to infer use as a method."
+    }
+  ]
+}

@@ -256,6 +256,8 @@ function renderTable(cats) {
   $$("#table-wrap [data-cat]").forEach(b=>b.onclick=()=>openDrawer(b.dataset.cat));
 }
 function render() {
+  if(state.group!=="cond-mat")TS.active=false;
+  document.body.classList.toggle("theme-mode",TS.active);
   ++drawToken;
   const cats=visibleCats();
   $$("[data-group]").forEach(b=>b.classList.toggle("active",b.dataset.group===state.group));
@@ -284,6 +286,7 @@ function render() {
   $("#history-title").textContent="Monthly trend";
   $("#snapshot-label").textContent=`${D.mode==="demo"?"DEMO / ":""}${dateText(D.asOf)} ${D.asOf.slice(11,16)} UTC`;
   refreshCharts();
+  renderThemes();
 }
 function refreshCharts() {
   $$("[data-range]").forEach(b=>{const on=+b.dataset.range===state.range;b.classList.toggle("selected",on);b.setAttribute("aria-pressed",String(on));});
@@ -646,7 +649,8 @@ async function hydrate() {
     }
   }
 }
-validateData(D);readHash();populateNavigation();renderStatus();bind();render();hydrate();
+/*__THEME_UI__*/
+validateData(D);readHash();populateNavigation();renderStatus();bind();bindThemes();render();hydrate();
 window.PulseMath={squarify,change,validateData,momentum,interestTerms,keywordMatches,searchTerms,queryMatches,paperKeywordMatches,normalizeSearch,highlight,chartDomain,chartWindow};
 window.PulseTest={getState:()=>({...state,watch:[...state.watch]}),getData:()=>D,setMonth,setGroup,openDrawer,closeDrawer};
 })();

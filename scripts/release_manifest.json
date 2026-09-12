@@ -1,0 +1,120 @@
+{
+  "appVersion": "0.6.0",
+  "fromVersions": [
+    "0.5.0"
+  ],
+  "files": {
+    "README.md": {
+      "new": "37a31e17805d82243f64f62a7cedfb8d260fb5a4c614e7a9b10742a199c41397",
+      "old": [
+        "0e791d7fa25fd0ef4930fa527df97aace331e20748dae275ec41423f0ef893e6"
+      ]
+    },
+    "TEST_REPORT.md": {
+      "new": "815260dda5e0293ed8153fbc8dffc10967164f92bdd90e7267dceee7745e1fc7",
+      "old": [
+        "30f983f7cdc24aaec4c8a45dde4da129a69b0b5a1ce4d49d2afa9e0c4ecda540"
+      ]
+    },
+    "THEMES.md": {
+      "new": "a16252b66458eea7983fb11ad788807cc8a9824d85e004e8f6cbf53dbda51653",
+      "old": []
+    },
+    "UPGRADE_v0.6.0.md": {
+      "new": "4c7b16c7066512837b14b33c5c1b940c01aeca1787896081490a5a3b573b0c5a",
+      "old": []
+    },
+    "VERSION": {
+      "new": "97a5d6e540a6120d09c39ddb667e0e8e2bac7fcc2ffef813b82e08fd60365bce",
+      "old": [
+        "a0ad50640139a524f86591157145bf1d4674ea9c065bfea21558f0f7b04430c8"
+      ]
+    },
+    "scripts/app.js": {
+      "new": "641e940b626658d7935eebc5a9fcba268d820f28ac457d57171837c365e00917",
+      "old": [
+        "fc4befbcfa551356bc7daf762681ca1db86d0ccfac144ef54416053d7827b4b0"
+      ]
+    },
+    "scripts/build.py": {
+      "new": "2090ed1f8559d5706d435c6ebfd4edea05005cd973769afb7908f1d9412a715a",
+      "old": [
+        "1dda9918fc1c6dba166a47fc5fc4e604511dd051747d345a926076160781477c"
+      ]
+    },
+    "scripts/classify_themes.py": {
+      "new": "4e313f6a969509c97d9b8b23f76900801252f5512f8f7a9d5cc75de4151a1601",
+      "old": []
+    },
+    "scripts/deploy_state.py": {
+      "new": "4ebd8ecb10c22ac05957f6f4d1723183b309a89259fe207a612f48341a75eab7",
+      "old": [
+        "8f02d471f1d428ea8c7c0bbc9074f192d080421ffebf6537f8fcb0f88a84f803"
+      ]
+    },
+    "scripts/index.template.html": {
+      "new": "68c3cc36e52f1527086b84ce03d0ccecd3f120c9ef42ebc7bfac57ef240205f3",
+      "old": [
+        "e32799bd49144bf2f578ef2a9c984149a89d249634733f58d336608cb0a400de"
+      ]
+    },
+    "scripts/oai.py": {
+      "new": "761fc2a9044125c7de382a612c354756438bcc6a206b7938fe485c0631e84115",
+      "old": [
+        "8c4aba88a12a435813f387f8ed2e0721a94e1eed6252c1a3f615a5fd98ef5a93"
+      ]
+    },
+    "scripts/prepare_publish.py": {
+      "new": "1dd1aa4e13a058f5eefad8d79ccc4a2be4b97ee17127adf0c242f0ed00c077c3",
+      "old": [
+        "76aa52a0398c29f953f24eda796cf0366429a73c218de9179fa20f327aabfe0f"
+      ]
+    },
+    "scripts/publish_github.py": {
+      "new": "36f239e45c85d36c5a714bab3c4a421fbe2f4c8f843246bc366f49b95337099f",
+      "old": [
+        "7f2d19d76dc84b92958505a8eceb468f775af09dfe32b3cee5e514116b4a0d4a"
+      ]
+    },
+    "scripts/theme_style.css": {
+      "new": "5e096696b5de911c0e0ffe363e66fa9f21e38d3cc3910a2ca92b23f3f360b2b4",
+      "old": []
+    },
+    "scripts/theme_ui.js": {
+      "new": "fb1f792b5e0a7b7f05591ffc23a0365945065f66c29f4ac32bb5c25263473623",
+      "old": []
+    },
+    "scripts/themes.json": {
+      "new": "7665269a188fba7b55ace611d423e03a15d7a57179a326814f2cfc038efe2122",
+      "old": []
+    },
+    "scripts/themes.py": {
+      "new": "a8babba65ca2519adde83c1b05e2095ce12109487b6b41b116cb0b2f28662031",
+      "old": []
+    },
+    "scripts/update_data.py": {
+      "new": "c696094d72aee74e3b9ff07d637521674d84cf4e4a92b3e684f797455a6db3ed",
+      "old": [
+        "3538fb2091ba4d25c7b7deac3e0d87813af47850964a39e10ae026c6c1e53f57"
+      ]
+    },
+    "scripts/upgrade_github.py": {
+      "new": "adf436cce7fa9095ad490ddad275806b59b23da876e08efbd72491b83fa3b8c1",
+      "old": []
+    },
+    "scripts/validate_site.py": {
+      "new": "6331ce69192b122153a2e6ac78d9b019576e6ccced9fd3f143e76c1ab96c8a08",
+      "old": [
+        "266c721d44e053aebcf666fbd2f0000c699c922e08cf50a370e40236c55e66ae"
+      ]
+    },
+    "tests/test_theme_deploy.py": {
+      "new": "162acf38ee5a38cca293caab11d37f12effd4e5843985d68ce39a09af51a304f",
+      "old": []
+    },
+    "tests/test_themes.py": {
+      "new": "033080b1a099b8b7f027843ed4da173730de6e41057f90ccd3526072628d7a8c",
+      "old": []
+    }
+  }
+}

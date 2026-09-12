@@ -1,3 +1,13 @@
+# Physics Pulse 0.6.0 - Research themes
+
+New: an independent Condensed Matter theme explorer, separate title / abstract input cohorts, classification coverage, and safe in-place upgrades of the already-published site.
+
+- Existing public site: see `UPGRADE_v0.6.0.md`. Do not repeat the initial publication/seed upload.
+- Theme definitions, limitations and retention: see `THEMES.md`.
+- Original hosting and daily update setup is retained below.
+
+---
+
 # Physics Pulse 0.5.0
 
 Independent arXiv Physics observatory: five years of monthly treemaps, adaptive
