@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark">
+<meta name="description" content="Monthly physics research activity. Five years of arXiv submissions, one clear view.">
+<title>Physics Pulse</title>
+<style>/*__CSS__*/</style>
+</head>
+<body>
+<a class="skip-link" href="#main">メインへ</a>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+ <a href="#all" class="brand" aria-label="Physics Pulse home"><svg class="brand-icon" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M2 19h8l5-12 7 22 5-10h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Physics <b>pulse</b></span></a>
+ <div class="nav-section-title">WORKSPACE</div>
+ <button class="nav-item" data-group="all"><span class="nav-icon">◈</span><span>All physics</span><span class="nav-shortcut">P</span></button>
+ <button class="nav-item" id="watch-nav"><span class="nav-icon">☆</span><span>Watchlist</span><span class="nav-count" id="watch-count">0</span></button>
+ <div class="nav-section-title field-label">FIELDS <span>09</span></div>
+ <nav id="group-nav" aria-label="物理分野"></nav>
+ <div class="sidebar-bottom"><button class="plain-btn" data-action="method">集計方法 <span>↗</span></button><div class="independent">Independent / arXiv data</div><div class="version-tag">v0.4.0</div></div>
+</aside>
+<div class="sidebar-shade" id="sidebar-shade"></div>
+<main id="main">
+ <header class="topbar"><div class="breadcrumb"><button class="icon-btn mobile-menu" id="mobile-menu" aria-label="分野メニュー">☰</button><span>RESEARCH OBSERVATORY</span><span id="crumb-current" class="sr-only"></span></div><div class="topbar-right"><span class="status-badge" id="data-status">DEMO</span><button class="icon-btn" data-action="method" aria-label="集計方法">ⓘ</button></div></header>
+ <div class="content">
+  <section class="hero">
+   <div><div class="eyebrow">THE PHYSICS LANDSCAPE</div><h1 id="field-title">Condensed Matter</h1></div>
+   <div class="month-control"><div class="month-picker"><button id="prev-month" class="icon-btn" aria-label="前の月">‹</button><div class="period-display"><strong id="period-title"></strong><select id="month-select" aria-label="集計する月"></select></div><button id="next-month" class="icon-btn" aria-label="次の月">›</button></div><div class="period-shortcuts"><span id="month-tag"></span><button id="current-month" class="selected" aria-pressed="true">今月</button><button id="complete-month" aria-pressed="false">前月</button></div><span id="period-range" class="sr-only"></span></div>
+  </section>
+  <div class="data-notice" id="data-notice" role="status"></div>
+  <section class="stats-grid" id="stats-grid" aria-label="選択月の統計"></section>
+  <section class="workspace">
+   <div class="map-card">
+    <div class="card-heading"><h2 id="map-title">Research map</h2><div class="map-heading-actions"><label class="search-box"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="category-search" type="search" placeholder="研究領域" autocomplete="off" aria-label="研究領域を検索"><kbd>/</kbd></label><div class="view-switch segmented" role="group" aria-label="表示方法"><button class="selected" id="map-view" aria-pressed="true" title="Map">▦</button><button id="table-view" aria-pressed="false" title="Table">☷</button></div></div></div>
+    <div class="legend-row"><span>面積 <b>投稿数</b><span class="legend-separator">/</span>色 <b id="comparison-label">前月比</b></span><div class="legend-scale"><span>−50%</span><div class="color-ramp"></div><span>+50%</span><button class="palette-btn" id="palette-toggle" aria-label="配色切替" aria-pressed="false" title="配色切替"><i></i><i></i></button><button id="export-csv" title="CSV" aria-label="CSVを保存">↓</button></div></div>
+    <div id="treemap" class="treemap" aria-label="投稿数ヒートマップ"></div><div id="table-wrap" class="table-wrap" hidden></div><div id="zero-categories" class="zero-categories" hidden></div>
+   </div>
+   <aside class="insights-column" aria-label="Momentum and watchlist">
+    <section class="insights-card"><div class="insights-heading"><h2>Momentum</h2><button class="icon-btn" data-action="method" aria-label="Momentumの定義">↗</button></div><p class="small-muted">3か月のシェア変化</p><div id="movers"></div><div class="momentum-period" id="momentum-period"></div></section>
+    <section class="watch-card"><div class="watch-card-head"><h2>Watchlist</h2><span>☆</span></div><div id="watchlist-mini"></div></section>
+   </aside>
+  </section>
+  <section class="history-card">
+   <div class="history-heading"><div><h2 id="history-title">Monthly trend</h2><div class="chart-scope" id="chart-scope"></div></div><div class="chart-controls">
+ <div class="segmented range-switch" role="group" aria-label="Chart range"><button data-range="12">1Y</button><button data-range="36">3Y</button><button data-range="60" class="selected">5Y</button></div>
+ <div class="segmented axis-switch" role="group" aria-label="Vertical axis"><button data-scale="auto" title="Fit the vertical axis to visible values" class="selected">AUTO</button><button data-scale="zero" title="Start the vertical axis at zero">0</button></div>
+ <button class="provisional-switch" data-provisional aria-pressed="false" title="Include the incomplete month as a dashed line">速報</button>
+</div></div>
+   <div class="history-chart" id="history-chart"></div>
+   <div class="chart-footer"><span class="chart-legend"><i></i>月間投稿数 <i class="dashed"></i>3M</span><span id="history-total"></span></div>
+  </section>
+  <footer class="page-footer"><span>Physics pulse <span class="footer-slash">/</span> <span id="snapshot-label"></span></span><button data-action="method">Data & methodology ↗</button></footer>
+ </div>
+</main>
+</div>
+<div class="hovercard" id="hovercard" role="tooltip" hidden></div>
+<div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+<aside class="paper-drawer" id="paper-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+ <div class="drawer-top"><span id="drawer-breadcrumb">CONDENSED MATTER</span><div><button class="icon-btn" data-action="method" aria-label="集計方法">ⓘ</button><button class="icon-btn" id="drawer-watch" aria-label="ウォッチリストに追加">☆</button><button class="icon-btn" id="drawer-close" aria-label="閉じる">×</button></div></div>
+ <div class="drawer-intro"><div class="eyebrow" id="drawer-code"></div><h2 id="drawer-title"></h2><p id="drawer-ja"></p><div class="drawer-stats" id="drawer-stats"></div></div>
+ <div class="drawer-chart-section"><div class="mini-heading"><span>MONTHLY TREND</span><span id="drawer-period"></span></div><div class="chart-controls">
+ <div class="segmented range-switch" role="group" aria-label="Chart range"><button data-range="12">1Y</button><button data-range="36">3Y</button><button data-range="60" class="selected">5Y</button></div>
+ <div class="segmented axis-switch" role="group" aria-label="Vertical axis"><button data-scale="auto" title="Fit the vertical axis to visible values" class="selected">AUTO</button><button data-scale="zero" title="Start the vertical axis at zero">0</button></div>
+ <button class="provisional-switch" data-provisional aria-pressed="false" title="Include the incomplete month as a dashed line">速報</button>
+</div><div id="drawer-chart"></div></div>
+ <div class="papers-section"><div class="papers-heading"><h3 id="papers-heading">Papers</h3><span id="papers-count"></span></div>
+  <div class="paper-tools"><div class="paper-sort segmented"><button data-sort="newest" class="selected">新着順</button><button data-sort="match">キーワード一致</button></div><label class="interest-label" for="interest-input"><span class="sr-only">関心キーワード</span><input id="interest-input" type="text" maxlength="1500" placeholder="disorder, quantum transport" autocomplete="off" title="関心語（カンマ区切り）"></label></div>
+  <p class="ranking-note" id="ranking-note"></p>
+  <div class="paper-search-row"><label class="paper-search search-box"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input id="paper-search" type="search" maxlength="300" placeholder="タイトル・著者・要旨" aria-label="この月・領域の論文を検索" title="複数語はAND検索。引用符でフレーズ検索。"></label><select id="search-field" aria-label="検索対象"><option value="all">すべて</option><option value="title">タイトル</option><option value="authors">著者</option><option value="abstract">要旨</option><option value="id">ID</option></select></div>
+  <p id="metadata-coverage" class="metadata-coverage" aria-live="polite"></p>
+  <div id="papers-list" aria-live="polite"></div><button id="load-more" class="load-more" hidden>さらに表示</button>
+ </div>
+</aside>
+<dialog class="method-dialog" id="method-dialog">
+ <div class="method-top"><div><div class="eyebrow">UNDER THE HOOD</div><h2>Data & methodology</h2></div><button class="icon-btn" id="method-close" aria-label="説明を閉じる">×</button></div>
+ <div class="method-grid">
+ <section><span class="method-number">01</span><h3>5年間の広がりと変化</h3><p>面積は選択月の初回投稿数、色は前月比。最新月は取得時点までの速報です。初期表示は今月、ボタンで前月に戻れます。</p><p>速報の色は前月の同じ経過期間と比較。前月が短い場合は両方の比較期間を短い方に制限します。面積は今月の取得済み全件数です。</p></section>
+ <section><span class="method-number">02</span><h3>保存済みメタデータ</h3><p>ID・初回投稿日時・主カテゴリで集計し、クロスリストは重複加算しません。タイトル・著者は通常の更新で受信した分と、旧DBから復元できた分を表示します。要旨は旧DBに残っていた分のみで、欠損を埋める再取得はしません。</p><p>検索は選択した月・研究領域の保存済み情報が対象。英字の大文字・小文字は区別せず、複数語はAND、引用符付きの語句はフレーズとして部分一致で検索します。未保存は不一致とは限りません。要旨は保存時点の内容で、最新版はarXivで確認してください。PDFは取得しません。</p></section>
+ <section><span class="method-number">03</span><h3>勢いと関心を、分けて表示</h3><p>領域の順位は、表示中の分野内における「直近の終了月3か月のシェア」から「その前3か月のシェア」を引いた値。前期30本以上、上昇した領域が対象です。検索で絞っても分母は変えません。</p><p>論文は入力した関心語と保存済みタイトル・要旨の一致数で並べます。意味の理解や同義語の推定はしません。どちらも人気・品質・統計的有意性の指標ではありません。</p></section>
+ <section><span class="method-number">04</span><h3>データの状態</h3><p id="coverage-note"></p><p id="method-data-note">同梱データは操作確認用の合成データです。</p><p>取得完了後にだけ画面用データを置き換えます。集計はUTC暦月。終了月でも再分類や公開遅延により後日修正される場合があります。</p></section>
+ <section><span class="method-number">05</span><h3>チャートの表示</h3><p>縦軸のAUTOは、表示期間の値に合わせて上下限を調整します。最小値と最大値はLOW / HIGHに明示。右軸の目盛りは実際の投稿数です。「0」でゼロ起点に戻せます。領域間で線の高さを比較せず、目盛りや数値を確認してください。</p><p>標準の折れ線は終了月のみ。「速報」をオンにすると、未完了月の取得済み件数を点線で追加します。月末件数の予測・補正はしません。面積は常に選択月の取得済み全件数です。</p><p>3Mは終了月の3か月移動平均。線は月次の観測値を直線でつなぎ、スムージングによる値の上書きはしません。線の下の薄い塗りは装飾で、面積は累積投稿数を表しません。</p></section>
+ </div>
+ <div class="source-links"><span>PRIMARY SOURCES</span><a href="https://arxiv.org/category_taxonomy" target="_blank" rel="noopener noreferrer">arXiv categories ↗</a><a href="https://info.arxiv.org/help/oa/index.html" target="_blank" rel="noopener noreferrer">OAI-PMH ↗</a><a href="https://info.arxiv.org/help/api/tou.html" target="_blank" rel="noopener noreferrer">API terms ↗</a></div>
+ <div class="attribution">Thank you to arXiv for use of its open access interoperability. This service was not reviewed or approved by, nor does it necessarily express or reflect the policies or opinions of, arXiv.</div><div class="method-bottom">設定とウォッチリストは、このブラウザ内にのみ保存します。arXiv公式サービスではありません。</div>
+</dialog>
+
+<div id="toast" class="toast" role="status" hidden></div>
+<script id="embedded-data" type="application/json">/*__DATA__*/</script><script>/*__JS__*/</script>
+</body></html>

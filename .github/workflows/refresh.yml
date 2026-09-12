@@ -1,0 +1,73 @@
+name: Publish Physics Pulse daily
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'publish-only uses the seed without arXiv requests; update fetches changes'
+        type: choice
+        options: [publish-only, update]
+        default: publish-only
+  schedule:
+    # Daily 06:17 UTC = 15:17 Japan. GitHub may delay/skip scheduled runs.
+    - cron: '17 6 * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: physics-pulse-production
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      ARXIV_CONTACT: ${{ secrets.ARXIV_CONTACT }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Offline regression tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Read verified persistent state (never start a five-year download)
+        run: python scripts/github_state.py download --repo "$GH_REPO"
+      - name: Fetch daily changes, prune old month, build and validate
+        id: build
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$EVENT_NAME" = 'schedule' ] || [ "$RUN_MODE" = 'update' ]; then
+            python scripts/cloud_build.py --update
+          else
+            python scripts/cloud_build.py
+          fi
+      - name: Persist new state and remove old managed state assets
+        env:
+          STATE_MANIFEST: ${{ steps.build.outputs.manifest }}
+        run: python scripts/github_state.py upload --repo "$GH_REPO" --manifest "$STATE_MANIFEST"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .work/site
+          retention-days: 1
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Record successful publication (small status only, no paper history)
+        run: python scripts/record_publication.py --repo "$GH_REPO" --health .work/site/health.json
+      - name: Remove ephemeral working files
+        if: always()
+        run: python -c "import shutil; shutil.rmtree('.work', ignore_errors=True)"

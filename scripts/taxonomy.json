@@ -1,0 +1,419 @@
+{
+  "verifiedAt": "2026-09-12",
+  "source": "https://arxiv.org/category_taxonomy",
+  "groups": [
+    {
+      "id": "cond-mat",
+      "name": "Condensed Matter",
+      "ja": "物性物理",
+      "abbr": "CM"
+    },
+    {
+      "id": "astro-ph",
+      "name": "Astrophysics",
+      "ja": "宇宙物理",
+      "abbr": "AP"
+    },
+    {
+      "id": "quant-ph",
+      "name": "Quantum Physics",
+      "ja": "量子物理",
+      "abbr": "QP"
+    },
+    {
+      "id": "hep",
+      "name": "High Energy Physics",
+      "ja": "高エネルギー物理",
+      "abbr": "HE"
+    },
+    {
+      "id": "physics",
+      "name": "General & Applied Physics",
+      "ja": "一般・応用物理",
+      "abbr": "PH"
+    },
+    {
+      "id": "gr-qc",
+      "name": "Relativity & Cosmology",
+      "ja": "一般相対論・量子宇宙論",
+      "abbr": "GR"
+    },
+    {
+      "id": "nucl",
+      "name": "Nuclear Physics",
+      "ja": "原子核物理",
+      "abbr": "NP"
+    },
+    {
+      "id": "nlin",
+      "name": "Nonlinear Sciences",
+      "ja": "非線形科学",
+      "abbr": "NL"
+    },
+    {
+      "id": "math-ph",
+      "name": "Mathematical Physics",
+      "ja": "数理物理",
+      "abbr": "MP"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cond-mat.dis-nn",
+      "name": "Disordered Systems and Neural Networks",
+      "shortName": "Disorder & neural nets",
+      "ja": "不規則系・ニューラルネットワーク",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.mes-hall",
+      "name": "Mesoscale and Nanoscale Physics",
+      "shortName": "Mesoscale & nanoscale",
+      "ja": "メゾスコピック・ナノスケール物理",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.mtrl-sci",
+      "name": "Materials Science",
+      "shortName": "Materials science",
+      "ja": "物質科学",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.other",
+      "name": "Other Condensed Matter",
+      "shortName": "Other condensed matter",
+      "ja": "その他の物性物理",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.quant-gas",
+      "name": "Quantum Gases",
+      "shortName": "Quantum gases",
+      "ja": "量子気体",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.soft",
+      "name": "Soft Condensed Matter",
+      "shortName": "Soft matter",
+      "ja": "ソフトマター",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.stat-mech",
+      "name": "Statistical Mechanics",
+      "shortName": "Statistical mechanics",
+      "ja": "統計力学",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.str-el",
+      "name": "Strongly Correlated Electrons",
+      "shortName": "Correlated electrons",
+      "ja": "強相関電子系",
+      "group": "cond-mat"
+    },
+    {
+      "id": "cond-mat.supr-con",
+      "name": "Superconductivity",
+      "shortName": "Superconductivity",
+      "ja": "超伝導",
+      "group": "cond-mat"
+    },
+    {
+      "id": "astro-ph.CO",
+      "name": "Cosmology and Nongalactic Astrophysics",
+      "shortName": "Cosmology",
+      "ja": "宇宙論・銀河外宇宙物理",
+      "group": "astro-ph"
+    },
+    {
+      "id": "astro-ph.EP",
+      "name": "Earth and Planetary Astrophysics",
+      "shortName": "Earth & planets",
+      "ja": "地球・惑星宇宙物理",
+      "group": "astro-ph"
+    },
+    {
+      "id": "astro-ph.GA",
+      "name": "Astrophysics of Galaxies",
+      "shortName": "Galaxies",
+      "ja": "銀河宇宙物理",
+      "group": "astro-ph"
+    },
+    {
+      "id": "astro-ph.HE",
+      "name": "High Energy Astrophysical Phenomena",
+      "shortName": "High-energy phenomena",
+      "ja": "高エネルギー天体現象",
+      "group": "astro-ph"
+    },
+    {
+      "id": "astro-ph.IM",
+      "name": "Instrumentation and Methods for Astrophysics",
+      "shortName": "Instruments & methods",
+      "ja": "天文観測装置・手法",
+      "group": "astro-ph"
+    },
+    {
+      "id": "astro-ph.SR",
+      "name": "Solar and Stellar Astrophysics",
+      "shortName": "Solar & stellar",
+      "ja": "太陽・恒星宇宙物理",
+      "group": "astro-ph"
+    },
+    {
+      "id": "quant-ph",
+      "name": "Quantum Physics",
+      "shortName": "Quantum physics",
+      "ja": "量子物理",
+      "group": "quant-ph"
+    },
+    {
+      "id": "hep-ex",
+      "name": "High Energy Physics - Experiment",
+      "shortName": "Experiment",
+      "ja": "高エネルギー物理・実験",
+      "group": "hep"
+    },
+    {
+      "id": "hep-lat",
+      "name": "High Energy Physics - Lattice",
+      "shortName": "Lattice",
+      "ja": "高エネルギー物理・格子",
+      "group": "hep"
+    },
+    {
+      "id": "hep-ph",
+      "name": "High Energy Physics - Phenomenology",
+      "shortName": "Phenomenology",
+      "ja": "高エネルギー物理・現象論",
+      "group": "hep"
+    },
+    {
+      "id": "hep-th",
+      "name": "High Energy Physics - Theory",
+      "shortName": "Theory",
+      "ja": "高エネルギー物理・理論",
+      "group": "hep"
+    },
+    {
+      "id": "gr-qc",
+      "name": "General Relativity and Quantum Cosmology",
+      "shortName": "Relativity & cosmology",
+      "ja": "一般相対論・量子宇宙論",
+      "group": "gr-qc"
+    },
+    {
+      "id": "nucl-ex",
+      "name": "Nuclear Experiment",
+      "shortName": "Nuclear experiment",
+      "ja": "原子核実験",
+      "group": "nucl"
+    },
+    {
+      "id": "nucl-th",
+      "name": "Nuclear Theory",
+      "shortName": "Nuclear theory",
+      "ja": "原子核理論",
+      "group": "nucl"
+    },
+    {
+      "id": "nlin.AO",
+      "name": "Adaptation and Self-Organizing Systems",
+      "shortName": "Self-organization",
+      "ja": "適応・自己組織化",
+      "group": "nlin"
+    },
+    {
+      "id": "nlin.CD",
+      "name": "Chaotic Dynamics",
+      "shortName": "Chaotic dynamics",
+      "ja": "カオス力学",
+      "group": "nlin"
+    },
+    {
+      "id": "nlin.CG",
+      "name": "Cellular Automata and Lattice Gases",
+      "shortName": "Cellular automata",
+      "ja": "セルオートマトン・格子気体",
+      "group": "nlin"
+    },
+    {
+      "id": "nlin.PS",
+      "name": "Pattern Formation and Solitons",
+      "shortName": "Patterns & solitons",
+      "ja": "パターン形成・ソリトン",
+      "group": "nlin"
+    },
+    {
+      "id": "nlin.SI",
+      "name": "Exactly Solvable and Integrable Systems",
+      "shortName": "Integrable systems",
+      "ja": "可積分系・厳密解",
+      "group": "nlin"
+    },
+    {
+      "id": "math-ph",
+      "name": "Mathematical Physics",
+      "shortName": "Mathematical physics",
+      "ja": "数理物理",
+      "group": "math-ph"
+    },
+    {
+      "id": "physics.acc-ph",
+      "name": "Accelerator Physics",
+      "shortName": "Accelerators",
+      "ja": "加速器物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.ao-ph",
+      "name": "Atmospheric and Oceanic Physics",
+      "shortName": "Atmosphere & ocean",
+      "ja": "大気・海洋物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.app-ph",
+      "name": "Applied Physics",
+      "shortName": "Applied physics",
+      "ja": "応用物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.atm-clus",
+      "name": "Atomic and Molecular Clusters",
+      "shortName": "Atomic clusters",
+      "ja": "原子・分子クラスター",
+      "group": "physics"
+    },
+    {
+      "id": "physics.atom-ph",
+      "name": "Atomic Physics",
+      "shortName": "Atomic physics",
+      "ja": "原子物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.bio-ph",
+      "name": "Biological Physics",
+      "shortName": "Biological physics",
+      "ja": "生物物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.chem-ph",
+      "name": "Chemical Physics",
+      "shortName": "Chemical physics",
+      "ja": "化学物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.class-ph",
+      "name": "Classical Physics",
+      "shortName": "Classical physics",
+      "ja": "古典物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.comp-ph",
+      "name": "Computational Physics",
+      "shortName": "Computational physics",
+      "ja": "計算物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.data-an",
+      "name": "Data Analysis, Statistics and Probability",
+      "shortName": "Data & statistics",
+      "ja": "データ解析・統計・確率",
+      "group": "physics"
+    },
+    {
+      "id": "physics.ed-ph",
+      "name": "Physics Education",
+      "shortName": "Physics education",
+      "ja": "物理教育",
+      "group": "physics"
+    },
+    {
+      "id": "physics.flu-dyn",
+      "name": "Fluid Dynamics",
+      "shortName": "Fluid dynamics",
+      "ja": "流体力学",
+      "group": "physics"
+    },
+    {
+      "id": "physics.gen-ph",
+      "name": "General Physics",
+      "shortName": "General physics",
+      "ja": "一般物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.geo-ph",
+      "name": "Geophysics",
+      "shortName": "Geophysics",
+      "ja": "地球物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.hist-ph",
+      "name": "History and Philosophy of Physics",
+      "shortName": "History & philosophy",
+      "ja": "物理学史・科学哲学",
+      "group": "physics"
+    },
+    {
+      "id": "physics.ins-det",
+      "name": "Instrumentation and Detectors",
+      "shortName": "Instruments & detectors",
+      "ja": "計測機器・検出器",
+      "group": "physics"
+    },
+    {
+      "id": "physics.med-ph",
+      "name": "Medical Physics",
+      "shortName": "Medical physics",
+      "ja": "医学物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.optics",
+      "name": "Optics",
+      "shortName": "Optics",
+      "ja": "光学",
+      "group": "physics"
+    },
+    {
+      "id": "physics.plasm-ph",
+      "name": "Plasma Physics",
+      "shortName": "Plasma physics",
+      "ja": "プラズマ物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.pop-ph",
+      "name": "Popular Physics",
+      "shortName": "Popular physics",
+      "ja": "一般向け物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.soc-ph",
+      "name": "Physics and Society",
+      "shortName": "Physics & society",
+      "ja": "社会物理",
+      "group": "physics"
+    },
+    {
+      "id": "physics.space-ph",
+      "name": "Space Physics",
+      "shortName": "Space physics",
+      "ja": "宇宙空間物理",
+      "group": "physics"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# Local/private inputs and generated state: never publish through git
+.cache/
+.work/
+.publish/
+.seed/
+site/
+__pycache__/
+*.pyc
+.DS_Store
+tests/screenshots/
+tests/artifacts/
+demo/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite.gz
+.env
+.env.*
